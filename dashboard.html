@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard - HealthApp</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: #020617;
+            color: white;
+        }
+
+        header {
+            background: #020617;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #1f2937;
+        }
+
+        header h2 {
+            color: #22c55e;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .actions {
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-right: 10px;
+            background: #22c55e;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #16a34a;
+        }
+
+        .card {
+            background: #111827;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th, td {
+            border: 1px solid #374151;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background: #1f2937;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h2>🏥 HealthApp</h2>
+    <span>Dashboard</span>
+</header>
+
+<div class="container">
+
+    <div class="actions">
+        <button onclick="loadUsers()">Ver Pacientes</button>
+        <button onclick="goAdmin()">Painel Admin</button>
+    </div>
+
+    <div class="card" id="users">
+        <p>Clique em "Ver Pacientes" para carregar dados</p>
+    </div>
+
+</div>
+
+<script>
+function loadUsers() {
+    fetch("http://localhost:8080/users")
+        .then(res => res.json())
+        .then(data => {
+            let html = `
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>CPF</th>
+                    </tr>
+            `;
+
+            data.forEach(u => {
+                html += `
+                    <tr>
+                        <td>${u.id}</td>
+                        <td>${u.name}</td>
+                        <td>${u.email}</td>
+                        <td>${u.cpf}</td>
+                    </tr>
+                `;
+            });
+
+            html += `</table>`;
+            document.getElementById("users").innerHTML = html;
+        });
+}
+
+function goAdmin() {
+    window.location.href = "admin.html";
+}
+</script>
+
+</body>
+</html>

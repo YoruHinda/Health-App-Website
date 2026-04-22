@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Panel - HealthApp</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: #020617;
+            color: white;
+        }
+
+        header {
+            background: #020617;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #1f2937;
+        }
+
+        header h2 {
+            color: #ef4444;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .warning {
+            background: #7f1d1d;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background: #ef4444;
+            border: none;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        button:hover {
+            background: #dc2626;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #111827;
+        }
+
+        th, td {
+            border: 1px solid #374151;
+            padding: 10px;
+        }
+
+        th {
+            background: #1f2937;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h2>⚠️ Admin Panel</h2>
+    <span>Área Restrita</span>
+</header>
+
+<div class="container">
+
+    <div class="warning">
+        <strong>Acesso restrito:</strong> Dados sensíveis do sistema
+    </div>
+
+    <button onclick="loadUsers()">Carregar Dados Sensíveis</button>
+
+    <table id="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>CPF</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+</div>
+
+<script>
+function loadUsers() {
+    fetch("http://localhost:8080/users")
+        .then(res => res.json())
+        .then(data => {
+            const tbody = document.querySelector("tbody");
+            tbody.innerHTML = "";
+
+            data.forEach(u => {
+                const row = `
+                    <tr>
+                        <td>${u.id}</td>
+                        <td>${u.name}</td>
+                        <td>${u.email}</td>
+                        <td>${u.cpf}</td>
+                    </tr>
+                `;
+                tbody.innerHTML += row;
+            });
+        });
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health App</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: #020617;
+            color: white;
+        }
+
+        /* HEADER */
+        header {
+            background: #020617;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #1f2937;
+        }
+
+        header h2 {
+            margin: 0;
+            color: #22c55e;
+        }
+
+        header button {
+            padding: 8px 15px;
+            background: #22c55e;
+            border: none;
+            cursor: pointer;
+            color: black;
+        }
+
+        /* BANNER */
+        .banner {
+            text-align: center;
+            padding: 100px 20px;
+            background: linear-gradient(180deg, #020617, #0f172a);
+        }
+
+        .banner h1 {
+            font-size: 42px;
+        }
+
+        .banner p {
+            color: #94a3b8;
+            margin: 20px 0;
+        }
+
+        .banner button {
+            padding: 12px 25px;
+            background: #22c55e;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        /* FEATURES */
+        .features {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 50px;
+        }
+
+        .card {
+            background: #111827;
+            padding: 20px;
+            width: 200px;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #020617;
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid #1f2937;
+            color: #94a3b8;
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <h2>🏥 HealthApp</h2>
+    <button onclick="goSystem()">Acessar Sistema</button>
+</header>
+
+<!-- BANNER -->
+<section class="banner">
+    <h1>Gestão Médica Inteligente</h1>
+    <p>Gerencie pacientes, médicos e dados clínicos em um só lugar</p>
+    <button onclick="goSystem()">Entrar no Sistema</button>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+    <div class="card">
+        <h3>👤 Pacientes</h3>
+        <p>Controle completo de usuários</p>
+    </div>
+    <div class="card">
+        <h3>🩺 Médicos</h3>
+        <p>Gerenciamento de especialistas</p>
+    </div>
+    <div class="card">
+        <h3>📊 Dados</h3>
+        <p>Visualização de informações clínicas</p>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2026 HealthApp - Sistema interno</p>
+</footer>
+
+<script>
+function goSystem() {
+    window.location.href = "login.html";
+}
+</script>
+
+</body>
+</html>
